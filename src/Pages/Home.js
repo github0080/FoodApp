@@ -10,6 +10,7 @@ import PostAddIcon from '@material-ui/icons/PostAdd';
 import DynamicFeedIcon from '@material-ui/icons/DynamicFeed';
 import PersonPinIcon from '@material-ui/icons/PersonPin';
 import Feeds from '../Components/Feeds';
+import UploadButtons from '../Components/Button'
  
 function TabPanel(props) {
  const { children, value, index, ...other } = props; // props destructuring ES6
@@ -81,7 +82,7 @@ export default function FullWidthTabs() {
  onChangeIndex={handleChangeIndex}
  >
  <TabPanel value={value} index={0} dir={theme.direction}>
-  Item One
+  <UploadButtons/>
  </TabPanel>
  <TabPanel value={value} index={1} dir={theme.direction}>
  <Feeds/>
