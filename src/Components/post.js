@@ -1,32 +1,90 @@
-import React from "react";
-import { MDBContainer, MDBRow, MDBCol, MDBBtn, MDBIcon, MDBInput } from 'mdbreact';
+import React from 'react';
+import TextField from '@material-ui/core/TextField';
+import { makeStyles } from '@material-ui/core/styles';
+import Button from '@material-ui/core/Button';
 
-const FormPage = () => {
-return (
-<MDBContainer>
-  <MDBRow>
-    <MDBCol md="6">
-      <form>
-        <p className="h5 text-center mb-4">Write to us</p>
-        <div className="grey-text">
-          <MDBInput label="Your name" icon="user" group type="text" validate error="wrong"
-            success="right" />
-          <MDBInput label="Your email" icon="envelope" group type="email" validate error="wrong"
-            success="right" />
-          <MDBInput label="Subject" icon="tag" group type="text" validate error="wrong" success="right" />
-          <MDBInput type="textarea" rows="2" label="Your message" icon="pencil-alt" />
-        </div>
-        <div className="text-center">
-          <MDBBtn outline color="secondary">
-            Send
-            <MDBIcon far icon="paper-plane" className="ml-1" />
-          </MDBBtn>
-        </div>
-      </form>
-    </MDBCol>
-  </MDBRow>
-</MDBContainer>
-);
-};
 
-export default FormPage;
+const useStyles = makeStyles((theme) => ({
+  root: {
+    '& .MuiTextField-root': {
+      margin: theme.spacing(1),
+      width: '25ch',
+    },
+  },
+}));
+
+export default function StateTextFields() {
+  const classes = useStyles();
+  const [name, setName] = React.useState('');
+  const [phone, setPhone] = React.useState(0);
+  const [seat, setSeat] = React.useState(0);
+  const [location, setLocation] = React.useState('');
+  const handleChangeName = (event) => {
+      event.preventDefault();
+      setName(event.target.value);
+  };
+
+  const handleSubmit = () => {
+
+    const data = {
+        name,
+        phone,
+        seat,
+        location
+    }
+  
+    console.log(data);
+
+  }
+  
+  
+
+  return (
+    <form className={classes.root} noValidate autoComplete="off" >
+      <div>
+        <TextField
+          id="filled-name"
+          label="Name"
+          placeholder='Enter Name'
+          value={name}
+          onChange={handleChangeName}
+          variant="filled"
+
+        />
+        <TextField
+          id="filled-uncontrolled"
+          label="Phone"
+          //defaultValue="foo"
+          placeholder = "Phone"
+          variant="filled"
+          value={phone}
+          onChange={(e) => {setPhone(e.target.value)}}
+        />
+      </div>
+      <div>
+        <TextField
+          id="outlined-name"
+         // label="Seat"
+          placeholder='Enter seats'
+          value={seat}
+          onChange={(e) => {setSeat(e.target.value)}}
+          variant="outlined"
+        />
+        <TextField
+          id="outlined-uncontrolled"
+         // label="Location"
+         placeholder='Enter Location'
+          value={location}
+          onChange={(e) => {setLocation (e.target.value)}}
+        //  defaultValue="foo"
+          variant="outlined"
+        />
+
+        <Button onClick={handleSubmit} 
+        variant="contained" 
+        color="primary"
+        > Save form </Button>
+      </div>
+    </form>
+  );
+}

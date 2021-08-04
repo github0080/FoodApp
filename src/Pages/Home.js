@@ -11,7 +11,7 @@ import DynamicFeedIcon from '@material-ui/icons/DynamicFeed';
 import PersonPinIcon from '@material-ui/icons/PersonPin';
 import Feeds from '../Components/Feeds';
 import UploadButtons from '../Components/Button'
-import post from '../Components/post'
+import Inputs from '../Components/post'
  
 function TabPanel(props) {
  const { children, value, index, ...other } = props; // props destructuring ES6
@@ -74,7 +74,7 @@ export default function FullWidthTabs() {
  >
  <Tab icon={<PostAddIcon />} label="POST" />
  <Tab icon={<DynamicFeedIcon />} label="FEEDS" />
- <Tab icon={<PersonPinIcon />} label="NEARBY" />
+
  </Tabs>
  </AppBar>
  <SwipeableViews
@@ -83,16 +83,13 @@ export default function FullWidthTabs() {
  onChangeIndex={handleChangeIndex}
  >
  <TabPanel value={value} index={0} dir={theme.direction}>
- <post/>
+ <Inputs/>
  </TabPanel>
  <TabPanel value={value} index={1} dir={theme.direction}>
  <Feeds/>
  <Feeds/>
  <Feeds/>
  <Feeds/>
- </TabPanel>
- <TabPanel value={value} index={2} dir={theme.direction}>
- Item Three
  </TabPanel>
 
  </SwipeableViews>

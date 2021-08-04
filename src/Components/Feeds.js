@@ -76,7 +76,7 @@ export default function RecipeReviewCard() {
             guests. Add 1 cup of frozen peas along with the mussels, if you like.
             </Typography> */}
             
-            <NestedGrid/>
+            <NestedGrid />
             
             </CardContent>
             <CardActions disableSpacing>
