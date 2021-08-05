@@ -4,6 +4,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 
 
+
 const useStyles = makeStyles((theme) => ({
   root: {
     '& .MuiTextField-root': {
@@ -18,25 +19,28 @@ export default function StateTextFields() {
   const [name, setName] = React.useState('');
   const [phone, setPhone] = React.useState(0);
   const [seat, setSeat] = React.useState(0);
+  //const [date, setDate] = React.useState();
   const [location, setLocation] = React.useState('');
   const handleChangeName = (event) => {
       event.preventDefault();
       setName(event.target.value);
   };
 
-  const handleSubmit = () => {
 
+  const handleSubmit = () => {
+   // setDate(new Date())
+   let date = new Date()
     const data = {
         name,
         phone,
         seat,
-        location
+        location,
+        date 
     }
   
     console.log(data);
 
   }
-  
   
 
   return (

@@ -8,9 +8,7 @@ import Tab from '@material-ui/core/Tab';
 import Box from '@material-ui/core/Box';
 import PostAddIcon from '@material-ui/icons/PostAdd';
 import DynamicFeedIcon from '@material-ui/icons/DynamicFeed';
-import PersonPinIcon from '@material-ui/icons/PersonPin';
 import Feeds from '../Components/Feeds';
-import UploadButtons from '../Components/Button'
 import Inputs from '../Components/post'
  
 function TabPanel(props) {
