@@ -27,9 +27,12 @@ export default function StateTextFields() {
   };
 
 
+
   const handleSubmit = () => {
    // setDate(new Date())
-   let date = new Date()
+   let date = new Date();
+   
+   
     const data = {
         name,
         phone,
@@ -38,7 +41,15 @@ export default function StateTextFields() {
         date 
     }
   
-    console.log(data);
+    fetch( "http://localhost:3000/api/v1/stats", {
+      method: 'POST', // or 'PUT'
+      body: JSON.stringify(data), // data can be `string` or {object}!
+      headers: new Headers({
+        'Content-Type': 'application/json'
+      })
+    }).then(res => res.json())
+    .catch(error => console.error('Error:', error))
+    .then(response => console.log('Success:', response));
 
   }
   

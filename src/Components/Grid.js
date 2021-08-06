@@ -24,7 +24,7 @@ const useStyles = makeStyles((theme) => ({
 
 
  
-export default function NestedGrid() {
+export default function NestedGrid({phone, location, seat}) {
  const classes = useStyles(); 
  
  
@@ -44,7 +44,7 @@ export default function NestedGrid() {
             </Typography>
             :
             <Typography >
-            Seats: 3
+            Seats:{seat}
             </Typography>
         }
         </Paper>
@@ -57,11 +57,11 @@ export default function NestedGrid() {
                 </IconButton> 
                 {phoneicon?
                 <Typography >
-                0909097544
+               {phone}
                 </Typography>
                 :
                 <Typography >
-                To: F16
+                To:{location}
                 </Typography>
         }
         </Paper>

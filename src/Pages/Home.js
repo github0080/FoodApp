@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import PropTypes from 'prop-types';
 import SwipeableViews from 'react-swipeable-views';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
@@ -10,10 +10,11 @@ import PostAddIcon from '@material-ui/icons/PostAdd';
 import DynamicFeedIcon from '@material-ui/icons/DynamicFeed';
 import Feeds from '../Components/Feeds';
 import Inputs from '../Components/post'
+
+
  
 function TabPanel(props) {
  const { children, value, index, ...other } = props; // props destructuring ES6
- 
  
  return (
  <div
@@ -45,11 +46,31 @@ const useStyles = makeStyles((theme) => ({
  
  },
 }));
- 
+
 export default function FullWidthTabs() {
  const classes = useStyles();
  const theme = useTheme();
  const [value, setValue] = React.useState(0);
+
+ 
+const [datafeeds, setDataFeeds] = React.useState([]);
+
+useEffect(() => {
+   console.log("I am working");
+
+   fetch('http://localhost:3000/api/v1/stats')
+       .then(data => {
+       return data.json();
+       })
+       .then(post => {
+           setDataFeeds(post);
+           
+       //console.log(post);
+       });
+
+ },[]);
+
+ console.log(datafeeds);
  
  const handleChange = (event, newValue) => {
  setValue(newValue);
@@ -84,10 +105,13 @@ export default function FullWidthTabs() {
  <Inputs/>
  </TabPanel>
  <TabPanel value={value} index={1} dir={theme.direction}>
- <Feeds/>
- <Feeds/>
- <Feeds/>
- <Feeds/>
+     {
+         datafeeds.map((item) => {
+             const {name, phone, location, date, seat} = item;
+            return  <Feeds key={item.id} name={name} phone={phone} location={location} seat={seat} date={date}  />
+         })
+     }
+   
  </TabPanel>
 
  </SwipeableViews>

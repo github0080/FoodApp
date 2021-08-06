@@ -1,4 +1,4 @@
-import React from 'react';
+import React  from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import clsx from 'clsx';
 import Card from '@material-ui/core/Card';
@@ -41,7 +41,7 @@ const useStyles = makeStyles((theme) => ({
  },
 }));
  
-export default function RecipeReviewCard() {
+export default function RecipeReviewCard({name, date, location, seat, phone}) {
  const classes = useStyles();
  const [expanded, setExpanded] = React.useState(false);
  
@@ -54,7 +54,7 @@ export default function RecipeReviewCard() {
             <CardHeader
             avatar={
             <Avatar aria-label="recipe" className={classes.avatar}>
-            R
+            {name[0].toUpperCase()}
             </Avatar>
             }
             action={
@@ -62,8 +62,8 @@ export default function RecipeReviewCard() {
             <MoreVertIcon />
             </IconButton>
             }
-                title="Calerb Louis Jean"
-                subheader="September 14, 2016"
+                title={name}
+                subheader={date}
             />
             <CardMedia
                 className={classes.media}
@@ -76,7 +76,7 @@ export default function RecipeReviewCard() {
             guests. Add 1 cup of frozen peas along with the mussels, if you like.
             </Typography> */}
             
-            <NestedGrid />
+            <NestedGrid location={location} seat={seat} phone={phone}/>
             
             </CardContent>
             <CardActions disableSpacing>
