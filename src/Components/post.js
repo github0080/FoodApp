@@ -17,8 +17,8 @@ const useStyles = makeStyles((theme) => ({
 export default function StateTextFields() {
   const classes = useStyles();
   const [name, setName] = React.useState('');
-  const [phone, setPhone] = React.useState(0);
-  const [seat, setSeat] = React.useState(0);
+  const [phone, setPhone] = React.useState("");
+  const [seat, setSeat] = React.useState("");
   //const [date, setDate] = React.useState();
   const [location, setLocation] = React.useState('');
   const handleChangeName = (event) => {
@@ -41,7 +41,7 @@ export default function StateTextFields() {
         date 
     }
   
-    fetch( "http://localhost:3000/api/v1/stats", {
+    fetch( "https://damp-meadow-58869.herokuapp.com/api/v1/stats", {
       method: 'POST', // or 'PUT'
       body: JSON.stringify(data), // data can be `string` or {object}!
       headers: new Headers({
@@ -58,28 +58,28 @@ export default function StateTextFields() {
     <form className={classes.root} noValidate autoComplete="off" >
       <div>
         <TextField
-          id="filled-name"
+          id="outlined-uncontrolled"
           label="Name"
           placeholder='Enter Name'
           value={name}
           onChange={handleChangeName}
-          variant="filled"
+          variant="outlined"
 
         />
         <TextField
-          id="filled-uncontrolled"
+          id="outlined-uncontrolled"
           label="Phone"
           //defaultValue="foo"
           placeholder = "Phone"
-          variant="filled"
+          variant="outlined"
           value={phone}
           onChange={(e) => {setPhone(e.target.value)}}
         />
       </div>
       <div>
         <TextField
-          id="outlined-name"
-         // label="Seat"
+          id="outlined-uncontrolled"
+          label="Seat"
           placeholder='Enter seats'
           value={seat}
           onChange={(e) => {setSeat(e.target.value)}}
@@ -87,8 +87,8 @@ export default function StateTextFields() {
         />
         <TextField
           id="outlined-uncontrolled"
-         // label="Location"
-         placeholder='Enter Location'
+          label="Location"
+          placeholder='Enter Location'
           value={location}
           onChange={(e) => {setLocation (e.target.value)}}
         //  defaultValue="foo"

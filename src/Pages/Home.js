@@ -56,9 +56,9 @@ export default function FullWidthTabs() {
 const [datafeeds, setDataFeeds] = React.useState([]);
 
 useEffect(() => {
-   console.log("I am working");
+   //console.log("I am working");
 
-   fetch('http://localhost:3000/api/v1/stats')
+   fetch('https://damp-meadow-58869.herokuapp.com/api/v1/stats')
        .then(data => {
        return data.json();
        })
